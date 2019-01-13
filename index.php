@@ -30,7 +30,7 @@ if ( ! empty( $_POST ) ) {
             <div class="form-field">
                 <input type="email" class="text" name="email" placeholder="Enter your email" required>
             </div>
-            <div class="form-field">
+           <!-- <div class="form-field">
                 <h3 class="section-title">Frequency</h3>
                 <label for="frequency-daily">Daily</label>
                 <input type="radio" class="radio" id="frequency-daily" name="frequency" value="daily" checked>
@@ -45,7 +45,7 @@ if ( ! empty( $_POST ) ) {
                 <input type="checkbox" class="checkbox" id="interest-html" name="interests[html]" value="1">
                 <label for="interest-css">CSS</label>
                 <input type="checkbox" class="checkbox" id="interest-css" name="interests[css]" value="1">
-            </div>
+            </div> -->	
             <div class="form-field">
                 <h3 class="section-title">Catalog</h3>
                 <select name="catalog" class="select" >
