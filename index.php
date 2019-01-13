@@ -16,7 +16,7 @@ if ( ! empty( $_POST ) ) {
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <link rel="stylesheet" href="style.css">
-        <title>HTML Form Tutorial</title>
+        <title>Lab Audit Form</title>
     </head>
     <body>
         <?php echo do_messages($insert); ?>
@@ -47,17 +47,17 @@ if ( ! empty( $_POST ) ) {
                 <input type="checkbox" class="checkbox" id="interest-css" name="interests[css]" value="1">
             </div>
             <div class="form-field">
-                <h3 class="section-title">Country</h3>
-                <select name="country" class="select" required>
-                    <option value="">Select a Country</option>
-                    <?php foreach ( $countries as $country ) : ?>
-                        <option value="<?php echo $country; ?>"><?php echo $country; ?></option>
+                <h3 class="section-title">Catalog</h3>
+                <select name="catalog" class="select" >
+                    <option value="">Select a Catalog</option>
+                    <?php foreach ( $catalogs as $catalog ) : ?>
+                        <option value="<?php echo $catalog; ?>"><?php echo $catalog; ?></option>
                     <?php endforeach; ?>
                 </select>
             </div>
             <div class="form-field">
                 <h3 class="section-title">Comments</h3>
-                <textarea class="textarea" name="comment" placeholder="Enter your comments here"></textarea>
+                <textarea class="textarea" name="description" placeholder="Enter your vApp description here"></textarea>
             </div>
             <div class="form-field">
                 <button class="button">Submit</button>

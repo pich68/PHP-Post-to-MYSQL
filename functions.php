@@ -64,8 +64,8 @@ if ( ! function_exists( 'process' ) ) {
         $args = array(
             'name' => 'FILTER_SANITIZE_STRING',
             'frequency' => 'FILTER_SANITIZE_STRING',
-            'country' => 'FILTER_SANITIZE_STRING',
-            'comment' => 'FILTER_SANITIZE_STRING',
+            'catalog' => 'FILTER_SANITIZE_STRING',
+            'description' => 'FILTER_SANITIZE_STRING',
         );
         
         $filter_post = filter_var_array($post, $args);
@@ -85,13 +85,13 @@ if ( ! function_exists( 'process' ) ) {
         $mysql = new mysqli(DB_HOST, DB_USER, DB_PASS, DB_NAME);
         
         $stmt = $mysql->prepare("
-            INSERT INTO users (name,email,frequency,interests,country,comment) 
+            INSERT INTO users (name,email,frequency,interests,catalog,description) 
             VALUES(?,?,?,?,?,?)
         ");
         
         $stmt->bind_param("ssssss", 
             $filter_post['name'], $filter_email, $filter_post['frequency'], 
-            $filter_interests, $filter_post['country'], $filter_post['comment']
+            $filter_interests, $filter_post['catalog'], $filter_post['description']
         );
         
         $insert = $stmt->execute();
