@@ -89,7 +89,7 @@ if ( ! function_exists( 'process' ) ) {
             VALUES(?,?,?,?)
         ");
         
-        $stmt->bind_param("ssssss", 
+        $stmt->bind_param("ssss", 
             $filter_post['name'], $filter_email, $filter_post['catalog'], $filter_post['description']
         );
         
