@@ -7,7 +7,7 @@ $form_action = 'submit_form';
 $nonce = create_nonce($form_action, $timestamp);
 
 if ( ! empty( $_POST ) ) { 
-    $insert = process($_POST);
+    $insert = process( $_POST );
 }
 ?>
 <!DOCTYPE html>
@@ -19,7 +19,9 @@ if ( ! empty( $_POST ) ) {
         <title>Lab Audit Form</title>
     </head>
     <body>
+	<?php if(!empty($insert)) { ?>
         <?php echo do_messages($insert); ?>
+	<?php } ?>
         <form action="" method="post">
             <input type="hidden" name="timestamp" value="<?php echo $timestamp; ?>">
             <input type="hidden" name="form_action" value="<?php echo $form_action; ?>">
