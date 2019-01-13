@@ -63,7 +63,7 @@ if ( ! function_exists( 'process' ) ) {
         // Filter input
         $args = array(
             'name' => 'FILTER_SANITIZE_STRING',
-            'frequency' => 'FILTER_SANITIZE_STRING',
+            //'frequency' => 'FILTER_SANITIZE_STRING',
             'catalog' => 'FILTER_SANITIZE_STRING',
             'description' => 'FILTER_SANITIZE_STRING',
         );
@@ -71,27 +71,26 @@ if ( ! function_exists( 'process' ) ) {
         $filter_post = filter_var_array($post, $args);
         
         // Filter interests
-        if ( ! empty ( $post['interests'] ) ) {
-            foreach ( array_keys( $post['interests'] ) as $interest ) {
-                $interests[] = filter_var($interest, FILTER_SANITIZE_STRING);
-            }
+        //  if ( ! empty ( $post['interests'] ) ) {
+        //    foreach ( array_keys( $post['interests'] ) as $interest ) {
+        //       $interests[] = filter_var($interest, FILTER_SANITIZE_STRING);
+        //    }
             
-            $filter_interests = serialize($interests); 
-        } else {
-            $filter_interests = '';
-        }
+        //    $filter_interests = serialize($interests); 
+        //} else {
+        //    $filter_interests = '';
+        //}
 
         // Send to database
         $mysql = new mysqli(DB_HOST, DB_USER, DB_PASS, DB_NAME);
         
         $stmt = $mysql->prepare("
-            INSERT INTO users (name,email,frequency,interests,catalog,description) 
-            VALUES(?,?,?,?,?,?)
+            INSERT INTO users (name,email,catalog,description) 
+            VALUES(?,?,?,?)
         ");
         
         $stmt->bind_param("ssssss", 
-            $filter_post['name'], $filter_email, $filter_post['frequency'], 
-            $filter_interests, $filter_post['catalog'], $filter_post['description']
+            $filter_post['name'], $filter_email, $filter_post['catalog'], $filter_post['description']
         );
         
         $insert = $stmt->execute();
